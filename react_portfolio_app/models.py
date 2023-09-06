@@ -65,6 +65,19 @@ class Projects(models.Model):
     class Meta:
         verbose_name_plural = "Projects"
 
+class Testimonials(models.Model):
+    testimonial = models.TextField(help_text="The testimonial")
+    name = models.CharField(max_length=200, help_text="Name of the individual")
+    designation = models.CharField(max_length=200, help_text="office of the individual")
+    company = models.CharField(max_length=200, help_text="company of the individual")
+    image = models.ImageField(blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural='Testimonials'
+
+    def __str__(self):
+        return self.name
+
 class Contact(models.Model):
     name = models.CharField(max_length=1000, verbose_name='Name of Sender:', help_text='Name of the sender sending an email')
     #email = models.EmailField(verbose_name='Email of Sender:', help_text='Contact email of the sender')

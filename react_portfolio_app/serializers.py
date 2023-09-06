@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Services,Technology,Experience,Projects
+from .models import Services,Technology,Experience,Projects,Testimonials
 
 class ServicesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -10,6 +10,12 @@ class TechnologySerializer(serializers.ModelSerializer):
     class Meta:
         model = Technology
         fields = '__all__'
+
+class TestimonialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Testimonials
+        fields = '__all__'
+
 class ExperienceSerializer(serializers.ModelSerializer):
     points = serializers.StringRelatedField(many=True)
     class Meta:

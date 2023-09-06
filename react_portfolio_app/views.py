@@ -1,8 +1,8 @@
 from smtplib import SMTPConnectError
 import socket
 from urllib.error import URLError
-from .models import Projects,Technology,Experience,Services, Contact
-from .serializers import ProjectsSerializer,TechnologySerializer,ExperienceSerializer,ServicesSerializer
+from .models import Projects,Technology,Experience,Services, Contact, Testimonials
+from .serializers import ProjectsSerializer,TechnologySerializer,ExperienceSerializer,ServicesSerializer, TestimonialSerializer
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -23,6 +23,10 @@ class ExperienceView(ListCreateAPIView):
 class TechnologyView(ListCreateAPIView):
     serializer_class = TechnologySerializer
     queryset = Technology.objects.all()
+
+class TestimonialsView(ListCreateAPIView):
+    serializer_class = TestimonialSerializer
+    queryset = Testimonials.objects.all()
 
 class ServicesView(ListCreateAPIView):
     serializer_class = ServicesSerializer
