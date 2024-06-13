@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['myportfolio-eo57.onrender.com', '127.0.0.1']
+ALLOWED_HOSTS = ['myportfolio-eo57.onrender.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -144,8 +144,12 @@ SENDGRID_API_KEY = config('SENDGRID_API_KEY')
 REST_FRAMEWORK ={
     'DEFAULT_PERMISSION_CLASSES':[
         'rest_framework.permissions.AllowAny',
+        #'rest_framework.authentication.BasicAuthentication',
+        #'rest_framework.authentication.SessionAuthentication'
     ],
 }
-CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOWED_ORIGINS = ['https://eboguaustine.web.app']
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

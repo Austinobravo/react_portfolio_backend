@@ -3,32 +3,44 @@ import socket
 from urllib.error import URLError
 from .models import Projects,Technology,Experience,Services, Contact, Testimonials
 from .serializers import ProjectsSerializer,TechnologySerializer,ExperienceSerializer,ServicesSerializer, TestimonialSerializer
-from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import ListCreateAPIView, ListAPIView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 from django.core.mail import send_mail, BadHeaderError
 from rest_framework import  status
 from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 
-class ProjectView(ListCreateAPIView):
+class ProjectView(ListAPIView):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
     serializer_class = ProjectsSerializer
     queryset = Projects.objects.all()
 
-class ExperienceView(ListCreateAPIView):
+class ExperienceView(ListAPIView):
+    # authentication_classes = [SessionAuthentication, BasicAuthentication]
+    # permission_classes = [IsAuthenticated]
     serializer_class = ExperienceSerializer
     queryset = Experience.objects.all()
 
-class TechnologyView(ListCreateAPIView):
+class TechnologyView(ListAPIView):
+    # authentication_classes = [SessionAuthentication, BasicAuthentication]
+    # permission_classes = [IsAuthenticated]
     serializer_class = TechnologySerializer
     queryset = Technology.objects.all()
 
-class TestimonialsView(ListCreateAPIView):
+class TestimonialsView(ListAPIView):
+    # authentication_classes = [SessionAuthentication, BasicAuthentication]
+    # permission_classes = [IsAuthenticated]
     serializer_class = TestimonialSerializer
     queryset = Testimonials.objects.all()
 
-class ServicesView(ListCreateAPIView):
+class ServicesView(ListAPIView):
+    # authentication_classes = [SessionAuthentication, BasicAuthentication]
+    # permission_classes = [IsAuthenticated]
     serializer_class = ServicesSerializer
     queryset = Services.objects.all()
 
