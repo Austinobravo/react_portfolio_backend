@@ -15,8 +15,8 @@ from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 
 class ProjectView(ListAPIView):
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [SessionAuthentication, BasicAuthentication]
+    # permission_classes = [IsAuthenticated]
     serializer_class = ProjectsSerializer
     queryset = Projects.objects.all()
 
